@@ -8,6 +8,7 @@ public class UIManager:MonoBehaviour {
     [SerializeField] private TextMeshProUGUI _percentageText;
     [Header("------- Instruction Panel -------")]
     [SerializeField] private InstructionPanel _instructionPanel;
+
     private void Awake() {
         appVersion.text = Application.version;
         if (Instance == null) {
@@ -30,5 +31,9 @@ public class UIManager:MonoBehaviour {
 
     public void DisplayMachineInformation(MachineData machineData) {
         _instructionPanel.DisplayMachineInformation(machineData);
+    }
+
+    public void SetMachine(Machine machine) { 
+        _instructionPanel.SetMachine(machine);
     }
 }

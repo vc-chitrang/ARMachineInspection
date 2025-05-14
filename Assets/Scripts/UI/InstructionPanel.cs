@@ -30,6 +30,9 @@ public class InstructionPanel:MonoBehaviour {
             UpdateNextPreviousButtonUI();
             UpdateCounterText();
             HighlightSelectedTask();
+            Debug.Log($"{_selectedTaskIndex}/{_instructionList.Count}");
+
+            PerformOprationOnMachine();
         }
     }
 
@@ -106,7 +109,6 @@ public class InstructionPanel:MonoBehaviour {
     }
 
     public void UpdateCounterText() {
-        Debug.Log($"{selectedTaskIndex}/{_instructionList.Count}");       
 
         int completedTask = _instructionList.Count(i => i.IsTaskPerformed());
         if (IsAllTaskPerformed()) { 
@@ -135,5 +137,18 @@ public class InstructionPanel:MonoBehaviour {
             _selectedTaskIndex = _instructionList.Count - 1;
 
         _instructionList[selectedTaskIndex].SetHighlighter(true);
+    }
+
+    private Machine _machine;
+    public void SetMachine(Machine machine) {
+        _machine = machine;
+    }
+
+    private void PerformOprationOnMachine() {
+        if (_machine == null)
+            return;
+
+        _machine.ApplyGlassMaterial();
+        _machine.HighlightComponent(selectedTaskIndex);
     }
 }//InstructionPanel class end.
