@@ -23,7 +23,7 @@ public class InstructionPanel:MonoBehaviour {
     [SerializeField] private TextMeshProUGUI counterText;
 
     private int _selectedTaskIndex = 0;
-    private int selectedTaskIndex { 
+    private int selectedTaskIndex {
         get => _selectedTaskIndex;
         set {
             _selectedTaskIndex = value;
@@ -40,7 +40,7 @@ public class InstructionPanel:MonoBehaviour {
         toggleButton.onClick.AddListener(TogglePanel);
         nextButton.onClick.AddListener(OnNextButtonClick);
         previousButton.onClick.AddListener(OnPreviousButtonClick);
-    }    
+    }
 
     #region PANEL_OPEN_CLOSE
     public void TogglePanel() {
@@ -50,23 +50,31 @@ public class InstructionPanel:MonoBehaviour {
             Open();
         }
     }
+
     void Open() {
-        float targetPos = instructionPanel.rect.height * 0.5f;
-        instructionPanel.DOLocalMoveY(targetPos,_animationDuration)
+        // Kill any running tweens on the panel to avoid conflicts
+        instructionPanel.DOKill();
+
+        // Animate the panel to the open position
+        instructionPanel.DOAnchorPosY(0,_animationDuration)
             .SetEase(easeType)
             .OnComplete(() => {
                 isOpen = true;
-                arrowIcon.localScale = new Vector3(1,-1,1);
+                arrowIcon.localScale = new Vector3(1,-1,1); // Flip arrow
             });
     }
 
     void Close() {
-        float targetPos = (instructionPanel.rect.height * 0.5f) * -1;
-        instructionPanel.DOLocalMoveY(targetPos,_animationDuration)
+        float targetPos = Mathf.Abs(instructionPanel.rect.height);        
+
+        instructionPanel.DOKill();
+
+        // Animate the panel to the closed position
+        instructionPanel.DOAnchorPosY(targetPos,_animationDuration)
             .SetEase(easeType)
             .OnComplete(() => {
                 isOpen = false;
-                arrowIcon.localScale = Vector3.one;
+                arrowIcon.localScale = Vector3.one; // Reset arrow
             });
     }
     #endregion PANEL_OPEN_CLOSE
@@ -103,7 +111,7 @@ public class InstructionPanel:MonoBehaviour {
         previousButton.gameObject.SetActive(selectedTaskIndex > 0);
     }
 
-    private bool IsAllTaskPerformed() { 
+    private bool IsAllTaskPerformed() {
         int completedTask = _instructionList.Count(i => i.IsTaskPerformed());
         return completedTask == _instructionList.Count;
     }
@@ -111,7 +119,7 @@ public class InstructionPanel:MonoBehaviour {
     public void UpdateCounterText() {
 
         int completedTask = _instructionList.Count(i => i.IsTaskPerformed());
-        if (IsAllTaskPerformed()) { 
+        if (IsAllTaskPerformed()) {
             counterText.text = $"All Tasks Performed";
             return;
         }
@@ -122,18 +130,18 @@ public class InstructionPanel:MonoBehaviour {
     private void OnNextButtonClick() {
         if (!_instructionList[selectedTaskIndex].IsTaskPerformed()) {
             _instructionList[selectedTaskIndex].SetAsCompleted();
-        }        
-        selectedTaskIndex++;        
+        }
+        selectedTaskIndex++;
     }
 
     private void OnPreviousButtonClick() {
-        selectedTaskIndex--;        
+        selectedTaskIndex--;
     }
 
     private void HighlightSelectedTask() {
-        _instructionList.ForEach(t=> t.SetHighlighter(false));
-        
-        if(selectedTaskIndex >= _instructionList.Count)
+        _instructionList.ForEach(t => t.SetHighlighter(false));
+
+        if (selectedTaskIndex >= _instructionList.Count)
             _selectedTaskIndex = _instructionList.Count - 1;
 
         _instructionList[selectedTaskIndex].SetHighlighter(true);
