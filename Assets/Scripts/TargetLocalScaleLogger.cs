@@ -39,8 +39,8 @@ public class TargetLocalScaleLogger: MonoBehaviour {
         //int _percentage = Mathf.RoundToInt((currentScale.x - minmax.x) / (minmax.y - minmax.x) * 100);
         float _percentage = MathUtility.MapValue(currentScale.x,minmax.x,minmax.y,0,200);
         int roundedPercentage = Mathf.RoundToInt(_percentage);
-        AppController.Instance.PrintScalePercentage(roundedPercentage);
-        AppController.Instance.SetPercentageUI(true);
+        UIManager.Instance.PrintScalePercentage(roundedPercentage);
+        UIManager.Instance.SetPercentageUI(true);
 
         if (roundedPercentage == 100) {
             if (!hasVibratedAt100) {
