@@ -1,6 +1,8 @@
 using DG.Tweening;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,11 +16,28 @@ public class InstructionPanel:MonoBehaviour {
 
     [SerializeField] private InstructionPrefab instructionPrefab;
     [SerializeField] private RectTransform content;
-    private List<InstructionPrefab> _instructionPrefabList = new List<InstructionPrefab>();
+    private List<InstructionPrefab> _instructionList = new List<InstructionPrefab>();
+
+    [SerializeField] private Button nextButton;
+    [SerializeField] private Button previousButton;
+    [SerializeField] private TextMeshProUGUI counterText;
+
+    private int _selectedTaskIndex = 0;
+    private int selectedTaskIndex { 
+        get => _selectedTaskIndex;
+        set {
+            _selectedTaskIndex = value;
+            UpdateNextPreviousButtonUI();
+            UpdateCounterText();
+            HighlightSelectedTask();
+        }
+    }
 
     private void Start() {
         toggleButton.onClick.AddListener(TogglePanel);
-    }
+        nextButton.onClick.AddListener(OnNextButtonClick);
+        previousButton.onClick.AddListener(OnPreviousButtonClick);
+    }    
 
     #region PANEL_OPEN_CLOSE
     public void TogglePanel() {
@@ -47,6 +66,7 @@ public class InstructionPanel:MonoBehaviour {
                 arrowIcon.localScale = Vector3.one;
             });
     }
+    #endregion PANEL_OPEN_CLOSE
 
     internal void DisplayMachineInformation(MachineData machineData) {
         CleareInstructionPrefabList();
@@ -63,17 +83,57 @@ public class InstructionPanel:MonoBehaviour {
             instructionPrefabInstance.SetInstruction(instruction);
             instructionPrefabInstance.DisplayInstruction();
 
-            _instructionPrefabList.Add(instructionPrefabInstance);
+            _instructionList.Add(instructionPrefabInstance);
         }
+        selectedTaskIndex = 0;
     }
 
     private void CleareInstructionPrefabList() {
-        _instructionPrefabList.ForEach(i => {
+        _instructionList.ForEach(i => {
             Destroy(i.gameObject);
         });
-        _instructionPrefabList.Clear();
+        _instructionList.Clear();
     }
-    #endregion PANEL_OPEN_CLOSE
 
+    public void UpdateNextPreviousButtonUI() {
+        nextButton.gameObject.SetActive(selectedTaskIndex <= _instructionList.Count - 1);
+        previousButton.gameObject.SetActive(selectedTaskIndex > 0);
+    }
 
-}
+    private bool IsAllTaskPerformed() { 
+        int completedTask = _instructionList.Count(i => i.IsTaskPerformed());
+        return completedTask == _instructionList.Count;
+    }
+
+    public void UpdateCounterText() {
+        Debug.Log($"{selectedTaskIndex}/{_instructionList.Count}");       
+
+        int completedTask = _instructionList.Count(i => i.IsTaskPerformed());
+        if (IsAllTaskPerformed()) { 
+            counterText.text = $"All Tasks Performed";
+            return;
+        }
+        string taskText = completedTask > 1 ? "Tasks" : "Task";
+        counterText.text = $"{completedTask} {taskText} Performed out of {_instructionList.Count}";
+    }
+
+    private void OnNextButtonClick() {
+        if (!_instructionList[selectedTaskIndex].IsTaskPerformed()) {
+            _instructionList[selectedTaskIndex].SetAsCompleted();
+        }        
+        selectedTaskIndex++;        
+    }
+
+    private void OnPreviousButtonClick() {
+        selectedTaskIndex--;        
+    }
+
+    private void HighlightSelectedTask() {
+        _instructionList.ForEach(t=> t.SetHighlighter(false));
+        
+        if(selectedTaskIndex >= _instructionList.Count)
+            _selectedTaskIndex = _instructionList.Count - 1;
+
+        _instructionList[selectedTaskIndex].SetHighlighter(true);
+    }
+}//InstructionPanel class end.

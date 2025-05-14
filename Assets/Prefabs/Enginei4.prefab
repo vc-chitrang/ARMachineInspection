@@ -377,23 +377,33 @@ MonoBehaviour:
   machineData:
     components:
     - componentName: Camshafts
+      instructions: "Camshafts \u2014 Inspect for wear, proper lubrication, and smooth
+        rotation."
       componentList:
       - {fileID: 6553150249964720025}
       - {fileID: 8000783459921046317}
     - componentName: ExhaustManifolds
+      instructions: "Exhaust Manifolds \u2014 Check for cracks, leaks, and secure
+        connections."
       componentList:
       - {fileID: 8643260543819722498}
     - componentName: IntakeManifolds
+      instructions: "Intake Manifolds \u2014 Inspect for vacuum leaks, cracks, and
+        proper sealing."
       componentList:
       - {fileID: 8611231525244539832}
       - {fileID: 8796389250760639247}
     - componentName: Pistons
+      instructions: "Pistons \u2014 Examine for wear, damage, and proper movement
+        within cylinders."
       componentList:
       - {fileID: 8629744442283701005}
       - {fileID: 8396333886654699959}
       - {fileID: 1090965326956433796}
       - {fileID: 4237062417581053912}
     - componentName: ExhaustValves
+      instructions: "Exhaust Valves \u2014 Check for proper seating, carbon buildup,
+        and wear."
       componentList:
       - {fileID: 2571648100343516017}
       - {fileID: 8890477827446217473}
@@ -404,6 +414,8 @@ MonoBehaviour:
       - {fileID: 2976543737322109372}
       - {fileID: 7901082157027270948}
     - componentName: ExhaustValvesSprings
+      instructions: "Exhaust Valve Springs \u2014 Inspect for tension, alignment,
+        and any signs of fatigue."
       componentList:
       - {fileID: 7932880139684323798}
       - {fileID: 2830979934898448030}
@@ -414,6 +426,8 @@ MonoBehaviour:
       - {fileID: 8876232091284697528}
       - {fileID: 5739659785866904198}
     - componentName: IntakeValves
+      instructions: "Intake Valves \u2014 Ensure smooth operation, proper seating,
+        and clean surfaces."
       componentList:
       - {fileID: 4781140051112947802}
       - {fileID: 5325512146213685417}
@@ -424,6 +438,8 @@ MonoBehaviour:
       - {fileID: 8125238209245190003}
       - {fileID: 1045647520777908346}
     - componentName: IntakeValvesSprings
+      instructions: "Intake Valve Springs \u2014 Check for proper tension and potential
+        cracks."
       componentList:
       - {fileID: 5245554680035166645}
       - {fileID: 5875272099918467961}
@@ -434,6 +450,8 @@ MonoBehaviour:
       - {fileID: 1870079229384204466}
       - {fileID: 7595792925132045968}
     - componentName: Crankshaft
+      instructions: "Crankshaft \u2014 Inspect for smooth rotation, wear, and secure
+        attachment."
       componentList:
       - {fileID: 2270840266956939812}
       - {fileID: 4535984393130639853}
@@ -443,12 +461,16 @@ MonoBehaviour:
       - {fileID: 261953113697813325}
       - {fileID: 8503050500417711000}
     - componentName: CylinderHead
+      instructions: "Cylinder Head \u2014 Check for leaks, warping, and clean coolant
+        passages."
       componentList:
       - {fileID: 8372542978580755139}
       - {fileID: 3165762949308680287}
       - {fileID: 2572122245656319867}
       - {fileID: 4777031233724638483}
     - componentName: EngineBlock
+      instructions: "Engine Block \u2014 Inspect for cracks, leaks, and proper fluid
+        levels."
       componentList:
       - {fileID: 2494766058807186037}
       - {fileID: 436379165559003143}
@@ -460,14 +482,19 @@ MonoBehaviour:
       - {fileID: 3993121864537090409}
       - {fileID: 4234565080202605063}
     - componentName: FuelRail
+      instructions: "Fuel Rail \u2014 Verify secure fittings, no leaks, and proper
+        fuel pressure."
       componentList:
       - {fileID: 2175345118633166266}
       - {fileID: 1925537717832194259}
       - {fileID: 1182669131231817867}
     - componentName: TimingBelt
+      instructions: "Timing Belt \u2014 Check for tension, cracks, and signs of wear."
       componentList:
       - {fileID: 2708616027456158558}
     - componentName: Gearbox
+      instructions: "Gearbox \u2014 Inspect for smooth shifting, proper lubrication,
+        and leaks."
       componentList:
       - {fileID: 1979374191317825023}
       - {fileID: 6897482446030973532}
@@ -480,6 +507,8 @@ MonoBehaviour:
       - {fileID: 6254494808341181711}
       - {fileID: 910650545994933554}
     - componentName: SparkPlugs
+      instructions: "Spark Plugs \u2014 Examine for fouling, wear, and proper gap
+        setting."
       componentList:
       - {fileID: 5028378669780862355}
   glassMaterial: {fileID: 2100000, guid: 9e292c00025ffb44a879995e9d6f6c6c, type: 2}

@@ -20,7 +20,6 @@ public class TargetLocalScaleLogger: MonoBehaviour {
     void Start() {
         minmax = new Vector2(aRTransformer.minScale,aRTransformer.maxScale);
         initialScale = grabInteractable.GetTargetLocalScale();
-        Debug.Log($"initialScale: {initialScale} || {minmax}");
         PrintPercentage();
     }
 
@@ -31,7 +30,6 @@ public class TargetLocalScaleLogger: MonoBehaviour {
         if (newScale != currentScale) {
             currentScale = newScale;
             PrintPercentage();
-            Debug.Log($"Target scale changed: {currentScale}");
         }
     }
 
