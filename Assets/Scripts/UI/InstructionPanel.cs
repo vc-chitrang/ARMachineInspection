@@ -7,9 +7,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class InstructionPanel:MonoBehaviour {
-    [SerializeField] private Button toggleButton;
+    [SerializeField] private Button _openPanelButton;
+    [SerializeField] private Button _closePanelButton;
+
     [SerializeField] private RectTransform instructionPanel;
-    [SerializeField] private RectTransform arrowIcon;
     bool isOpen = false;
     private float _animationDuration = 0.5f;
     private Ease easeType = Ease.Linear;
@@ -18,7 +19,7 @@ public class InstructionPanel:MonoBehaviour {
     [SerializeField] private RectTransform content;
     private List<InstructionPrefab> _instructionList = new List<InstructionPrefab>();
 
-    [SerializeField] private Button nextButton;
+    [SerializeField] private Button nextButton;    
     [SerializeField] private Button previousButton;
     [SerializeField] private TextMeshProUGUI counterText;
 
@@ -30,26 +31,37 @@ public class InstructionPanel:MonoBehaviour {
             UpdateNextPreviousButtonUI();
             UpdateCounterText();
             HighlightSelectedTask();
-            Debug.Log($"{_selectedTaskIndex}/{_instructionList.Count}");
+            //Debug.Log($"{_selectedTaskIndex}/{_instructionList.Count}");
 
             PerformOprationOnMachine();
+
+            UpdateCurrentInstructionOnUI();
         }
     }
 
+    [Header("TitlePanel")]
+    [SerializeField] private GameObject _titlePanel;
+    [SerializeField] private TextMeshProUGUI _currentInstruction;
+    [SerializeField] private Button _nextInstructionButton;
+    [SerializeField] private Button _previousInstructionButton;
+    [SerializeField] private Image _checkBoxInstructionImage;
+
     private void Start() {
-        toggleButton.onClick.AddListener(TogglePanel);
+        _openPanelButton.onClick.AddListener(Open);
+        _closePanelButton.onClick.AddListener(Close);
+
         nextButton.onClick.AddListener(OnNextButtonClick);
         previousButton.onClick.AddListener(OnPreviousButtonClick);
+
+        _nextInstructionButton.onClick.AddListener(OnNextButtonClick);
+        _previousInstructionButton.onClick.AddListener(OnPreviousButtonClick);
+
+        _closePanelButton.gameObject.SetActive(false);
+
+        _titlePanel.SetActive(false);
     }
 
     #region PANEL_OPEN_CLOSE
-    public void TogglePanel() {
-        if (isOpen) {
-            Close();
-        } else {
-            Open();
-        }
-    }
 
     void Open() {
         // Kill any running tweens on the panel to avoid conflicts
@@ -60,7 +72,7 @@ public class InstructionPanel:MonoBehaviour {
             .SetEase(easeType)
             .OnComplete(() => {
                 isOpen = true;
-                arrowIcon.localScale = new Vector3(1,-1,1); // Flip arrow
+                _closePanelButton.gameObject.SetActive(true);
             });
     }
 
@@ -68,13 +80,12 @@ public class InstructionPanel:MonoBehaviour {
         float targetPos = Mathf.Abs(instructionPanel.rect.height);        
 
         instructionPanel.DOKill();
-
+        _closePanelButton.gameObject.SetActive(false);
         // Animate the panel to the closed position
         instructionPanel.DOAnchorPosY(targetPos,_animationDuration)
             .SetEase(easeType)
             .OnComplete(() => {
                 isOpen = false;
-                arrowIcon.localScale = Vector3.one; // Reset arrow
             });
     }
     #endregion PANEL_OPEN_CLOSE
@@ -109,6 +120,9 @@ public class InstructionPanel:MonoBehaviour {
     public void UpdateNextPreviousButtonUI() {
         nextButton.gameObject.SetActive(selectedTaskIndex <= _instructionList.Count - 1);
         previousButton.gameObject.SetActive(selectedTaskIndex > 0);
+
+        _nextInstructionButton.gameObject.SetActive(selectedTaskIndex <= _instructionList.Count - 1);
+        _previousInstructionButton.gameObject.SetActive(selectedTaskIndex > 0);
     }
 
     private bool IsAllTaskPerformed() {
@@ -158,5 +172,20 @@ public class InstructionPanel:MonoBehaviour {
 
         _machine.ApplyGlassMaterial();
         _machine.HighlightComponent(selectedTaskIndex);
+    }
+
+    private void UpdateCurrentInstructionOnUI() {
+        if (selectedTaskIndex >= _instructionList.Count)
+            return;
+
+        Instruction instruction = _instructionList[selectedTaskIndex].GetInstruction();
+        _currentInstruction.text = $"{instruction.instructionId + 1}. {instruction.instructionText}";
+
+        _checkBoxInstructionImage.gameObject.SetActive(instruction.isTaskPerformed);
+        _currentInstruction.fontStyle = instruction.isTaskPerformed ? FontStyles.Strikethrough : FontStyles.Normal;
+    }
+
+    internal void EnableInstructionPanel() {
+        _titlePanel.SetActive(true);
     }
 }//InstructionPanel class end.

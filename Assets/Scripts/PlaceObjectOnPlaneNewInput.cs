@@ -1,20 +1,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Interactions;
 using UnityEngine.XR.ARFoundation;
 
 [RequireComponent(typeof(ARRaycastManager))]
-public class PlaceObjectOnPlaneNewInput : PressInputBase
-{
+public class PlaceObjectOnPlaneNewInput:PressInputBase {
     [SerializeField] private int index = 0;
     [SerializeField] private List<GameObject> mObjectList;
 
-    GameObject spawnedObject;
     bool isPressed;
     private ARRaycastManager aRRaycastManager;
     List<ARRaycastHit> hits = new List<ARRaycastHit>();
-
+    GameObject _spawnedObject = null;
     protected override void Awake() {
         base.Awake();
         aRRaycastManager = GetComponent<ARRaycastManager>();
@@ -27,17 +24,14 @@ public class PlaceObjectOnPlaneNewInput : PressInputBase
 
         var touchPosition = Pointer.current.position.ReadValue();
         if (aRRaycastManager.Raycast(touchPosition,hits,UnityEngine.XR.ARSubsystems.TrackableType.PlaneWithinPolygon)) {
-            var hitPose = hits[0].pose;
-            if (spawnedObject == null) {
-                spawnedObject = Instantiate(mObjectList[index],hitPose.position,hitPose.rotation);
+            if (_spawnedObject == null) {
+                var hitPose = hits[0].pose;
+                _spawnedObject = Instantiate(mObjectList[index],hitPose.position,hitPose.rotation);
+                Machine _machine = _spawnedObject.GetComponent<Machine>();
+                UIManager.Instance.EnableInstructionPanel();
+                UIManager.Instance.EnableViewSwitchButtons();
 
-                //Look at the Camera On First Time Spawn
-                //Vector3 lookPos = Camera.main.transform.position - spawnedObject.transform.position;
-                //lookPos.y = 0;
-                //spawnedObject.transform.rotation = Quaternion.LookRotation(lookPos);
-            } else { 
-                //spawnedObject.transform.position = hitPose.position;
-                //spawnedObject.transform.rotation = hitPose.rotation;
+                AppController.Instance.SetMachie(_machine);
             }
         }
     }

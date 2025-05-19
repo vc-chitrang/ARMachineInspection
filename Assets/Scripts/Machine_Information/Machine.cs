@@ -29,6 +29,23 @@ public class Machine:MonoBehaviour {
         UIManager.Instance.SetMachine(this);
         UIManager.Instance.DisplayMachineInformation(machineData);
     }
+
+    public Cord GetCurrentCordinate() {
+        return new Cord() {
+            pos = transform.position,
+            rot = transform.rotation
+        };
+    }
+
+    public void SetCurrentCordinate(Cord cord) {
+        transform.position = cord.pos;
+        transform.rotation = cord.rot;
+    }
+    public void ResetPosition() {
+        this.transform.localPosition = Vector3.zero;
+        this.transform.localRotation = Quaternion.identity;
+    }
+
 }//Machine Class end.
 
 [Serializable]
@@ -116,4 +133,9 @@ public class Component {
             _meshRenderer.materials = materials;
         }
     }
+}
+
+public class Cord {
+    public Vector3 pos;
+    public Quaternion rot;    
 }

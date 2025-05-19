@@ -8,6 +8,7 @@ public class UIManager:MonoBehaviour {
     [SerializeField] private TextMeshProUGUI _percentageText;
     [Header("------- Instruction Panel -------")]
     [SerializeField] private InstructionPanel _instructionPanel;
+    [SerializeField] private GameObject _viewSwitchButtons;
 
     private void Awake() {
         appVersion.text = Application.version;
@@ -17,6 +18,7 @@ public class UIManager:MonoBehaviour {
             Destroy(gameObject);
         }
         SetPercentageUI(false);
+        _viewSwitchButtons.SetActive(false);
     }
 
     public void SetPercentageUI(bool enable) {
@@ -35,5 +37,13 @@ public class UIManager:MonoBehaviour {
 
     public void SetMachine(Machine machine) { 
         _instructionPanel.SetMachine(machine);
+    }
+
+    public void EnableInstructionPanel() {
+        _instructionPanel.EnableInstructionPanel();
+    }
+
+    public void EnableViewSwitchButtons() {
+        _viewSwitchButtons.SetActive(true);
     }
 }
