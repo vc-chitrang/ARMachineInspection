@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -37,6 +38,10 @@ public class InstructionPrefab:MonoBehaviour {
 
     public void SetHighlighter(bool isHighlighted) {
         highlighterImage.gameObject.SetActive(isHighlighted);
+    }
+
+    internal Instruction GetInstruction() {
+        return _instruction;
     }
 }//InstructionPrefab class end.
 

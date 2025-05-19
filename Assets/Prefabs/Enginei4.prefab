@@ -380,137 +380,137 @@ MonoBehaviour:
       instructions: "Camshafts \u2014 Inspect for wear, proper lubrication, and smooth
         rotation."
       componentList:
-      - {fileID: 6553150249964720025}
-      - {fileID: 8000783459921046317}
+      - componentObject: {fileID: 6553150249964720025}
+      - componentObject: {fileID: 8000783459921046317}
     - componentName: ExhaustManifolds
       instructions: "Exhaust Manifolds \u2014 Check for cracks, leaks, and secure
         connections."
       componentList:
-      - {fileID: 8643260543819722498}
+      - componentObject: {fileID: 8643260543819722498}
     - componentName: IntakeManifolds
       instructions: "Intake Manifolds \u2014 Inspect for vacuum leaks, cracks, and
         proper sealing."
       componentList:
-      - {fileID: 8611231525244539832}
-      - {fileID: 8796389250760639247}
+      - componentObject: {fileID: 8611231525244539832}
+      - componentObject: {fileID: 8796389250760639247}
     - componentName: Pistons
       instructions: "Pistons \u2014 Examine for wear, damage, and proper movement
         within cylinders."
       componentList:
-      - {fileID: 8629744442283701005}
-      - {fileID: 8396333886654699959}
-      - {fileID: 1090965326956433796}
-      - {fileID: 4237062417581053912}
+      - componentObject: {fileID: 8629744442283701005}
+      - componentObject: {fileID: 8396333886654699959}
+      - componentObject: {fileID: 1090965326956433796}
+      - componentObject: {fileID: 4237062417581053912}
     - componentName: ExhaustValves
       instructions: "Exhaust Valves \u2014 Check for proper seating, carbon buildup,
         and wear."
       componentList:
-      - {fileID: 2571648100343516017}
-      - {fileID: 8890477827446217473}
-      - {fileID: 4138046739629073322}
-      - {fileID: 357008449133095382}
-      - {fileID: 8507461219642258192}
-      - {fileID: 7846445873974728710}
-      - {fileID: 2976543737322109372}
-      - {fileID: 7901082157027270948}
+      - componentObject: {fileID: 2571648100343516017}
+      - componentObject: {fileID: 8890477827446217473}
+      - componentObject: {fileID: 4138046739629073322}
+      - componentObject: {fileID: 357008449133095382}
+      - componentObject: {fileID: 8507461219642258192}
+      - componentObject: {fileID: 7846445873974728710}
+      - componentObject: {fileID: 2976543737322109372}
+      - componentObject: {fileID: 7901082157027270948}
     - componentName: ExhaustValvesSprings
       instructions: "Exhaust Valve Springs \u2014 Inspect for tension, alignment,
         and any signs of fatigue."
       componentList:
-      - {fileID: 7932880139684323798}
-      - {fileID: 2830979934898448030}
-      - {fileID: 5876118396047708474}
-      - {fileID: 3711735577571737202}
-      - {fileID: 6614102441162256206}
-      - {fileID: 9075910213312411380}
-      - {fileID: 8876232091284697528}
-      - {fileID: 5739659785866904198}
+      - componentObject: {fileID: 7932880139684323798}
+      - componentObject: {fileID: 2830979934898448030}
+      - componentObject: {fileID: 5876118396047708474}
+      - componentObject: {fileID: 3711735577571737202}
+      - componentObject: {fileID: 6614102441162256206}
+      - componentObject: {fileID: 9075910213312411380}
+      - componentObject: {fileID: 8876232091284697528}
+      - componentObject: {fileID: 5739659785866904198}
     - componentName: IntakeValves
       instructions: "Intake Valves \u2014 Ensure smooth operation, proper seating,
         and clean surfaces."
       componentList:
-      - {fileID: 4781140051112947802}
-      - {fileID: 5325512146213685417}
-      - {fileID: 6605994550886459276}
-      - {fileID: 3908386559050820657}
-      - {fileID: 7466895225067278999}
-      - {fileID: 1705076360662077878}
-      - {fileID: 8125238209245190003}
-      - {fileID: 1045647520777908346}
+      - componentObject: {fileID: 4781140051112947802}
+      - componentObject: {fileID: 5325512146213685417}
+      - componentObject: {fileID: 6605994550886459276}
+      - componentObject: {fileID: 3908386559050820657}
+      - componentObject: {fileID: 7466895225067278999}
+      - componentObject: {fileID: 1705076360662077878}
+      - componentObject: {fileID: 8125238209245190003}
+      - componentObject: {fileID: 1045647520777908346}
     - componentName: IntakeValvesSprings
       instructions: "Intake Valve Springs \u2014 Check for proper tension and potential
         cracks."
       componentList:
-      - {fileID: 5245554680035166645}
-      - {fileID: 5875272099918467961}
-      - {fileID: 8601031663322411217}
-      - {fileID: 2920107476612413608}
-      - {fileID: 6608655952123554619}
-      - {fileID: 836187377605330559}
-      - {fileID: 1870079229384204466}
-      - {fileID: 7595792925132045968}
+      - componentObject: {fileID: 5245554680035166645}
+      - componentObject: {fileID: 5875272099918467961}
+      - componentObject: {fileID: 8601031663322411217}
+      - componentObject: {fileID: 2920107476612413608}
+      - componentObject: {fileID: 6608655952123554619}
+      - componentObject: {fileID: 836187377605330559}
+      - componentObject: {fileID: 1870079229384204466}
+      - componentObject: {fileID: 7595792925132045968}
     - componentName: Crankshaft
       instructions: "Crankshaft \u2014 Inspect for smooth rotation, wear, and secure
         attachment."
       componentList:
-      - {fileID: 2270840266956939812}
-      - {fileID: 4535984393130639853}
-      - {fileID: 535040389702508220}
-      - {fileID: 4295671106657520547}
-      - {fileID: 2793327379482451714}
-      - {fileID: 261953113697813325}
-      - {fileID: 8503050500417711000}
+      - componentObject: {fileID: 2270840266956939812}
+      - componentObject: {fileID: 4535984393130639853}
+      - componentObject: {fileID: 535040389702508220}
+      - componentObject: {fileID: 4295671106657520547}
+      - componentObject: {fileID: 2793327379482451714}
+      - componentObject: {fileID: 261953113697813325}
+      - componentObject: {fileID: 8503050500417711000}
     - componentName: CylinderHead
       instructions: "Cylinder Head \u2014 Check for leaks, warping, and clean coolant
         passages."
       componentList:
-      - {fileID: 8372542978580755139}
-      - {fileID: 3165762949308680287}
-      - {fileID: 2572122245656319867}
-      - {fileID: 4777031233724638483}
+      - componentObject: {fileID: 8372542978580755139}
+      - componentObject: {fileID: 3165762949308680287}
+      - componentObject: {fileID: 2572122245656319867}
+      - componentObject: {fileID: 4777031233724638483}
     - componentName: EngineBlock
       instructions: "Engine Block \u2014 Inspect for cracks, leaks, and proper fluid
         levels."
       componentList:
-      - {fileID: 2494766058807186037}
-      - {fileID: 436379165559003143}
-      - {fileID: 1111029137705412269}
-      - {fileID: 3605485959075009611}
-      - {fileID: 3499250228462787502}
-      - {fileID: 8561816664392073679}
-      - {fileID: 8538068368646766508}
-      - {fileID: 3993121864537090409}
-      - {fileID: 4234565080202605063}
+      - componentObject: {fileID: 2494766058807186037}
+      - componentObject: {fileID: 436379165559003143}
+      - componentObject: {fileID: 1111029137705412269}
+      - componentObject: {fileID: 3605485959075009611}
+      - componentObject: {fileID: 3499250228462787502}
+      - componentObject: {fileID: 8561816664392073679}
+      - componentObject: {fileID: 8538068368646766508}
+      - componentObject: {fileID: 3993121864537090409}
+      - componentObject: {fileID: 4234565080202605063}
     - componentName: FuelRail
       instructions: "Fuel Rail \u2014 Verify secure fittings, no leaks, and proper
         fuel pressure."
       componentList:
-      - {fileID: 2175345118633166266}
-      - {fileID: 1925537717832194259}
-      - {fileID: 1182669131231817867}
+      - componentObject: {fileID: 2175345118633166266}
+      - componentObject: {fileID: 1925537717832194259}
+      - componentObject: {fileID: 1182669131231817867}
     - componentName: TimingBelt
       instructions: "Timing Belt \u2014 Check for tension, cracks, and signs of wear."
       componentList:
-      - {fileID: 2708616027456158558}
+      - componentObject: {fileID: 2708616027456158558}
     - componentName: Gearbox
       instructions: "Gearbox \u2014 Inspect for smooth shifting, proper lubrication,
         and leaks."
       componentList:
-      - {fileID: 1979374191317825023}
-      - {fileID: 6897482446030973532}
-      - {fileID: 4880710887287488749}
-      - {fileID: 3823055911450388123}
-      - {fileID: 8975583871718755417}
-      - {fileID: 4751949005884011689}
-      - {fileID: 6709479384238402333}
-      - {fileID: 8730496858511154983}
-      - {fileID: 6254494808341181711}
-      - {fileID: 910650545994933554}
+      - componentObject: {fileID: 1979374191317825023}
+      - componentObject: {fileID: 6897482446030973532}
+      - componentObject: {fileID: 4880710887287488749}
+      - componentObject: {fileID: 3823055911450388123}
+      - componentObject: {fileID: 8975583871718755417}
+      - componentObject: {fileID: 4751949005884011689}
+      - componentObject: {fileID: 6709479384238402333}
+      - componentObject: {fileID: 8730496858511154983}
+      - componentObject: {fileID: 6254494808341181711}
+      - componentObject: {fileID: 910650545994933554}
     - componentName: SparkPlugs
       instructions: "Spark Plugs \u2014 Examine for fouling, wear, and proper gap
         setting."
       componentList:
-      - {fileID: 5028378669780862355}
+      - componentObject: {fileID: 5028378669780862355}
   glassMaterial: {fileID: 2100000, guid: 9e292c00025ffb44a879995e9d6f6c6c, type: 2}
 --- !u!1001 &3673963115207250215
 PrefabInstance:

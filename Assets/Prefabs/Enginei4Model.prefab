@@ -1019,7 +1019,7 @@ MonoBehaviour:
   - {fileID: 6197581220559998619}
   FadeMaterial: {fileID: 2100000, guid: 4431cff6d05d203438dea2b813ceaf67, type: 2}
   OpaqueMaterial: {fileID: 2100000, guid: 19b19fc68a4abb0489aff06193e82a4e, type: 2}
-  ShowGUI: 1
+  ShowGUI: 0
   RPM: 6.3
   tweaks:
     TransparencyEnablingTime: 1
