@@ -8,7 +8,9 @@ public class ModeSwitcher:MonoBehaviour {
     public GameObject mainCamera;
     public GameObject model3D;
     public Button arModeButton;
+    public Image arModeHighlighter;
     public Button view3DButton;
+    public Image view3DHighlighter;
 
     private Machine _machine;
     private Cord _previouslyStoredCordinates;
@@ -20,8 +22,14 @@ public class ModeSwitcher:MonoBehaviour {
 
         // Start in AR Mode
         SwitchToARMode();
+
+        SetArModeHighlight(true);
     }
 
+    private void SetArModeHighlight(bool isEnable) { 
+        arModeHighlighter.gameObject.SetActive(isEnable);
+        view3DHighlighter.gameObject.SetActive(!isEnable);
+    }
     void SwitchToARMode() {
         // Enable AR components
         arSession.enabled = true;
@@ -40,6 +48,8 @@ public class ModeSwitcher:MonoBehaviour {
             _machine.transform.SetParent(null,false);
             _machine.SetCurrentCordinate(_previouslyStoredCordinates);
         }
+
+        SetArModeHighlight(true);
     }
 
     void SwitchTo3DView() {
@@ -60,5 +70,7 @@ public class ModeSwitcher:MonoBehaviour {
 
         _machine.transform.SetParent(model3D.transform,false);
         _machine.ResetPosition();
+
+        SetArModeHighlight(false);
     }
 }//ModeSwitcher class end.
